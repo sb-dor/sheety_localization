@@ -684,7 +684,7 @@ Future<List<io.File>> generateArbFiles({
     final (:bucket, :locale, :bytes) = iterator.current;
     final fileName = '${prefix ?? 'app'}_$locale.arb';
     final filePath = path.normalize(
-      path.join(arbDirectory.path, bucket, fileName),
+      path.join(arbDirectory.path, fileName),
     );
     final file = io.File(filePath);
     toDelete.remove(filePath);
@@ -781,7 +781,7 @@ Future<Set<String>> generateFlutterLocalization({
 
   for (final dir in toGenerate) {
     final bucket = path.basename(dir);
-    final genPath = path.normalize(path.join(genDirectory.path, bucket));
+    final genPath = path.normalize(genDirectory.path);
     if (!genPath.startsWith(libDirectory.path)) {
       $err('Gen path is outside of the library directory: $genPath');
       io.exit(1);
